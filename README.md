@@ -8,10 +8,21 @@ Expected Features:
 - [x] Parse `CONJUNCTION` operator
 - [x] Parse `DISJUNCTION` operator
 - [x] Parse `IMPLICATION` operator
-- [ ] Parse `NEGATION` operator
+- [x] Parse `NEGATION` operator
 - [ ] Parse `BICONDITIONAL` operator
 - [ ] Parse `EQUIVALENCE` operator
 - [ ] Parse Parentheses
+
+## Operators
+
+| NAME          | SYMBOL | ASCII CODE |
+|---------------|--------|------------|
+| CONJUNCTION   | ∧      | 8743       |
+| DISJUNCTION   | ∨      | 8744       |
+| IMPLICATION   | →      | 8594       |
+| NEGATION      | ¬      | 172        |
+| BICONDITIONAL | ↔      | 8596       |
+| EQUIVALENCE   | ≡      | 8801       |
 
 ## Configuration
 
