@@ -1,4 +1,4 @@
-import { AndNode, Node, OrNode, PropNode } from "./nodes";
+import { AndNode, ImplicationNode, Node, OrNode, PropNode } from "./nodes";
 
 export class Interpreter {
   visit(node: Node) {
@@ -10,11 +10,15 @@ export class Interpreter {
     return node.value;
   }
 
-  visitAndNode(node: OrNode): boolean {
+  visitAndNode(node: AndNode): boolean {
     return this.visit(node.left) && this.visit(node.right);
   }
 
   visitOrNode(node: OrNode): boolean {
     return this.visit(node.left) || this.visit(node.right);
+  }
+
+  visitImplicationNode(node: ImplicationNode): boolean {
+    return !(this.visit(node.left) && !this.visit(node.right));
   }
 }

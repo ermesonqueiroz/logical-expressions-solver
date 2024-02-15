@@ -7,7 +7,7 @@ A simple logical expressions parser
 Expected Features:
 - [x] Parse `CONJUNCTION` operator
 - [x] Parse `DISJUNCTION` operator
-- [ ] Parse `IMPLICATION` operator
+- [x] Parse `IMPLICATION` operator
 - [ ] Parse `NEGATION` operator
 - [ ] Parse `BICONDITIONAL` operator
 - [ ] Parse `EQUIVALENCE` operator

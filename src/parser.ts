@@ -1,5 +1,5 @@
 import { Token, TokenType } from "./lexer";
-import { AndNode, Node, OrNode, PropNode } from "./nodes";
+import { AndNode, ImplicationNode, Node, OrNode, PropNode } from "./nodes";
 
 export class Parser {
   private readonly tokens: Token[];
@@ -21,7 +21,7 @@ export class Parser {
   private parse_expression() {
     let result: Node = this.parse_factor();
 
-    const expressionOperatorsTypes = [TokenType.AND, TokenType.OR];
+    const expressionOperatorsTypes = [TokenType.AND, TokenType.OR, TokenType.IMPLICATION];
     while (expressionOperatorsTypes.includes(this.currentToken().type)) {
       if (this.currentToken().type === TokenType.AND) {
         this.cursor++;
@@ -29,6 +29,9 @@ export class Parser {
       } else if (this.currentToken().type === TokenType.OR) {
         this.cursor++;
         result = new OrNode(result, this.parse_factor())
+      } else if (this.currentToken().type === TokenType.IMPLICATION) {
+        this.cursor++;
+        result = new ImplicationNode(result, this.parse_factor())
       }
     }
 

@@ -20,12 +20,18 @@ export class BinaryOperationNode {
 
 export class AndNode extends BinaryOperationNode {
   constructor(left: Node, right: Node) {
-    super(left, right)
+    super(left, right);
   }
 }
 
 export class OrNode extends BinaryOperationNode {
   constructor(left: Node, right: Node) {
-    super(left, right)
+    super(left, right);
+  }
+}
+
+export class ImplicationNode extends BinaryOperationNode {
+  constructor(left: Node, right: Node) {
+    super(left, right);
   }
 }

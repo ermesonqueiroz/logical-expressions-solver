@@ -1,4 +1,5 @@
 export enum TokenType {
+  IMPLICATION = 'IMPLICATION',
   BOOL = 'BOOL',
   AND = 'AND',
   OR = 'OR',
@@ -30,6 +31,9 @@ export class Lexer {
 
     while (this.currentIndex < this.expression.length) {
       switch(this.currentChar().charCodeAt(0)) {
+        case 8594:
+          tokens.push({ type: TokenType.IMPLICATION });
+          break;
         case 8743:
           tokens.push({ type: TokenType.AND });
           break;
