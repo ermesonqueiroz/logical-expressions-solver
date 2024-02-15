@@ -38,4 +38,4 @@ node dist/main.js
 
 ## License
 
-This project is under MIT license
+This project is under [MIT](./LICENSE) license
