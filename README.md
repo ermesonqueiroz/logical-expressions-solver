@@ -9,7 +9,7 @@ Expected Features:
 - [x] Parse `DISJUNCTION` operator
 - [x] Parse `IMPLICATION` operator
 - [x] Parse `NEGATION` operator
-- [ ] Parse `BICONDITIONAL` operator
+- [x] Parse `BICONDITIONAL` operator
 - [ ] Parse `EQUIVALENCE` operator
 - [ ] Parse Parentheses
 
