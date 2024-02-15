@@ -1,5 +1,5 @@
 import { Token, TokenType } from "./lexer";
-import { AndNode, ImplicationNode, Node, OrNode, PropNode } from "./nodes";
+import { AndNode, ImplicationNode, NegationNode, Node, OrNode, PropNode } from "./nodes";
 
 export class Parser {
   private readonly tokens: Token[];
@@ -20,8 +20,12 @@ export class Parser {
 
   private parse_expression() {
     let result: Node = this.parse_factor();
+    const expressionOperatorsTypes = [
+      TokenType.AND,
+      TokenType.OR,
+      TokenType.IMPLICATION
+    ];
 
-    const expressionOperatorsTypes = [TokenType.AND, TokenType.OR, TokenType.IMPLICATION];
     while (expressionOperatorsTypes.includes(this.currentToken().type)) {
       if (this.currentToken().type === TokenType.AND) {
         this.cursor++;
@@ -38,12 +42,15 @@ export class Parser {
     return result;
   }
 
-  private parse_factor(): PropNode {
+  private parse_factor(): Node {
     const token = this.currentToken();
 
     if (this.currentToken().type === TokenType.BOOL) {
       this.cursor++;
       return new PropNode(token.value!);
+    } else if (this.currentToken().type === TokenType.NEGATION) {
+      this.cursor++;
+      return new NegationNode(this.parse_factor())
     }
 
     throw new Error('Invalid expression');
