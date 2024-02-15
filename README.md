@@ -11,6 +11,7 @@ Expected Features:
 - [ ] Parse `NEGATION` operator
 - [ ] Parse `BICONDITIONAL` operator
 - [ ] Parse `EQUIVALENCE` operator
+- [ ] Parse Parentheses
 
 ## Configuration
 
