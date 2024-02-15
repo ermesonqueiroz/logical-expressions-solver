@@ -1,4 +1,4 @@
-export type Node = PropNode | BinaryOperationNode; 
+export type Node = PropNode | BinaryOperationNode | UnaryOperationNode; 
 
 export class PropNode {
   public readonly value: boolean;
@@ -9,8 +9,8 @@ export class PropNode {
 }
 
 export class BinaryOperationNode {
-  public readonly left: PropNode | BinaryOperationNode;
-  public readonly right: PropNode | BinaryOperationNode;
+  public readonly left: Node;
+  public readonly right: Node;
 
   constructor(left: Node, right: Node) {
     this.left = left;
@@ -33,5 +33,19 @@ export class OrNode extends BinaryOperationNode {
 export class ImplicationNode extends BinaryOperationNode {
   constructor(left: Node, right: Node) {
     super(left, right);
+  }
+}
+
+export class UnaryOperationNode {
+  public readonly child: Node;
+
+  constructor(child: Node) {
+    this.child = child;
+  }
+}
+
+export class NegationNode extends UnaryOperationNode {
+  constructor(child: Node) {
+    super(child);
   }
 }
