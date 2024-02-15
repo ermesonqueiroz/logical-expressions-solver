@@ -1,4 +1,4 @@
-import { AndNode, ImplicationNode, NegationNode, Node, OrNode, PropNode } from "./nodes";
+import { AndNode, BiconditionalNode, ImplicationNode, NegationNode, Node, OrNode, PropNode } from "./nodes";
 
 export class Interpreter {
   visit(node: Node) {
@@ -24,5 +24,9 @@ export class Interpreter {
 
   visitNegationNode(node: NegationNode): boolean {
     return !this.visit(node.child);
+  }
+
+  visitBiconditionalNode(node: BiconditionalNode): boolean {
+    return this.visit(node.left) === this.visit(node.right);
   }
 }
