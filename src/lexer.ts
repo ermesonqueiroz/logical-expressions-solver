@@ -3,6 +3,7 @@ export enum TokenType {
   BOOL = 'BOOL',
   AND = 'AND',
   OR = 'OR',
+  NEGATION = 'NEGATION',
   LPAREN = 'LPAREN',
   RPAREN = 'RPAREN',
   EOF = 'EOF'
@@ -51,6 +52,9 @@ export class Lexer {
           break;
         case 70:
           tokens.push({ type: TokenType.BOOL, value: false });
+          break;
+        case 172:
+          tokens.push({ type: TokenType.NEGATION });
           break;
         default:
           throw new Error(`Illegal character '${this.currentChar()}'`);
