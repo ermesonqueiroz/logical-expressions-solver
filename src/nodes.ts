@@ -36,6 +36,12 @@ export class ImplicationNode extends BinaryOperationNode {
   }
 }
 
+export class BiconditionalNode extends BinaryOperationNode {
+  constructor(left: Node, right: Node) {
+    super(left, right);
+  }
+}
+
 export class UnaryOperationNode {
   public readonly child: Node;
 
