@@ -4,6 +4,7 @@ export enum TokenType {
   AND = 'AND',
   OR = 'OR',
   NEGATION = 'NEGATION',
+  BICONDITIONAL = 'BICONDITIONAL',
   LPAREN = 'LPAREN',
   RPAREN = 'RPAREN',
   EOF = 'EOF'
@@ -55,6 +56,9 @@ export class Lexer {
           break;
         case 172:
           tokens.push({ type: TokenType.NEGATION });
+          break;
+        case 8596:
+          tokens.push({ type: TokenType.BICONDITIONAL });
           break;
         default:
           throw new Error(`Illegal character '${this.currentChar()}'`);
