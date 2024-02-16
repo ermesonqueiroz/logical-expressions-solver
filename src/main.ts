@@ -1,7 +1,6 @@
-import { Interpreter } from "./interpreter";
-import { Lexer } from "./lexer";
-import { Parser } from "./parser";
 import readline from 'readline';
+import { TruthTable } from "./truth-table";
+import { solveLogicalExpression } from './solve-logical-expression';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -9,11 +8,26 @@ const rl = readline.createInterface({
 });
 
 const prompt = () => rl.question('logic-calculator > ', (expression) => {
-  const tokens = new Lexer(expression).tokenize();
-  const tree = new Parser(tokens).parse();
-  const result = new Interpreter().visit(tree)
+  const propositions = expression
+    .split('')
+    .filter(char => char.charCodeAt(0) >= 65 && char.charCodeAt(0) <= 90);
 
-  console.log(result);
+  const table = new TruthTable(propositions);
+  const resultWithOperator = table.mount().map((row) => {
+    let expressionToSolve = expression;
+
+    Object.entries(row).forEach(([key, value]) => {
+      expressionToSolve = expressionToSolve.replace(key, value ? 'V' : 'F')
+    });
+
+    return {
+      ...row,
+      [expression]: solveLogicalExpression(expressionToSolve)
+    }
+  })
+  
+
+  console.table(resultWithOperator);
   prompt();
 });
 
