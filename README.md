@@ -10,7 +10,6 @@ Expected Features:
 - [x] Parse `IMPLICATION` operator
 - [x] Parse `NEGATION` operator
 - [x] Parse `BICONDITIONAL` operator
-- [ ] Parse `EQUIVALENCE` operator
 - [ ] Parse Parentheses
 
 ## Operators
@@ -22,7 +21,6 @@ Expected Features:
 | IMPLICATION   | →      | 8594       |
 | NEGATION      | ¬      | 172        |
 | BICONDITIONAL | ↔      | 8596       |
-| EQUIVALENCE   | ≡      | 8801       |
 
 ## Configuration
 
