@@ -55,6 +55,12 @@ export class Parser {
     } else if (this.currentToken().type === TokenType.NEGATION) {
       this.cursor++;
       return new NegationNode(this.parse_factor())
+    } else if (this.currentToken().type === TokenType.LPAREN) {
+      this.cursor++;
+      const result = this.parse_expression()
+      this.cursor++;
+
+      return result;
     }
 
     throw new Error('Invalid expression');

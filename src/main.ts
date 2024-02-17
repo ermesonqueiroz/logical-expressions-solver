@@ -10,7 +10,12 @@ const rl = readline.createInterface({
 const prompt = () => rl.question('logic-calculator > ', (expression) => {
   const propositions = expression
     .split('')
-    .filter(char => char.charCodeAt(0) >= 65 && char.charCodeAt(0) <= 90);
+    .filter((char, index) => {
+      const isLetter = char.charCodeAt(0) >= 65 && char.charCodeAt(0) <= 90;
+      const isUnique = expression.split('').indexOf(char) === index;
+
+      return isLetter && isUnique;
+    })
 
   const table = new TruthTable(propositions);
   const resultWithOperator = table.mount().map((row) => {
