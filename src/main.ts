@@ -1,13 +1,7 @@
-import readline from 'readline';
 import { TruthTable } from "./truth-table";
 import { solveLogicalExpression } from './solve-logical-expression';
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-const prompt = () => rl.question('logic-calculator > ', (expression) => {
+export function mountTruthTable(expression: string): Record<string, boolean>[] {
   const propositions = expression
     .split('')
     .filter((char, index) => {
@@ -29,11 +23,9 @@ const prompt = () => rl.question('logic-calculator > ', (expression) => {
       ...row,
       [expression]: solveLogicalExpression(expressionToSolve)
     }
-  })
-  
+  });
 
-  console.table(resultWithOperator);
-  prompt();
-});
+  return resultWithOperator;
+}
 
-prompt();
+export { solveLogicalExpression };

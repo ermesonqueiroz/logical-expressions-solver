@@ -1,10 +1,22 @@
 {
+  "name": "logical-expressions-solver",
+  "description": "A simple logical expressions parser",
+  "version": "1.1.0",
+  "main": "./dist/main.js",
+  "module": "./dist/main.mjs",
+  "types": "./dist/main.d.ts",
+  "homepage": "",
+  "repository": {
+    "url": "https://github.com/ermesonqueiroz/logical-expressions-solver"
+  },
+  "author": "",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.11.17",
-    "ts-node-dev": "^2.0.0",
+    "tsup": "^8.0.2",
     "typescript": "^5.3.3"
   },
   "scripts": {
-    "dev": "tsnd --respawn --transpile-only src/main.ts"
+    "build": "tsup"
   }
 }

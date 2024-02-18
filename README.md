@@ -2,9 +2,7 @@
 
 A simple logical expressions parser
 
-## ⚠ This project is under Development ⚠
-
-Expected Features:
+Features:
 - [x] Parse `CONJUNCTION` operator
 - [x] Parse `DISJUNCTION` operator
 - [x] Parse `IMPLICATION` operator
