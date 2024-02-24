@@ -16,7 +16,7 @@ export function mountTruthTable(expression: string): Record<string, boolean>[] {
     let expressionToSolve = expression;
 
     Object.entries(row).forEach(([key, value]) => {
-      expressionToSolve = expressionToSolve.replace(key, value ? 'V' : 'F')
+      expressionToSolve = expressionToSolve.replaceAll(key, value ? 'V' : 'F')
     });
 
     return {
