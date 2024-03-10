@@ -23,7 +23,7 @@ export class Lexer {
     this.expression = expression.replace(/\s+/g, '');
   }
 
-  currentChar() {
+  private currentChar() {
     return this.expression[this.currentIndex];
   }
 
@@ -63,6 +63,9 @@ export class Lexer {
         default:
           throw new Error(`Illegal character '${this.currentChar()}'`);
       }
+
+      if (this.currentIndex > 0 && tokens.at(-1)?.type == tokens.at(-2)?.type)
+        throw new Error(`Bad formulated formula'`);
 
       this.currentIndex++;
     }
